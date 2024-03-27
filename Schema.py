@@ -14,3 +14,8 @@ class User_login(BaseModel):
     password: int
     library_id: str
 
+
+class Book_issue_data(BaseModel):
+    enrollment: int
+    book_name: str
+
