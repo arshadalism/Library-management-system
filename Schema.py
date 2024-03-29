@@ -29,3 +29,9 @@ class add_book(BaseModel):
     genre: str
     pages: int
 
+
+class Book_deposit_data(BaseModel):
+    enrollment: int
+    book_name: str
+    library_id: str
+

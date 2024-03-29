@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from Schema import User_signup, User_login, add_book, Book_issue_data
+from Schema import User_signup, User_login, add_book, Book_issue_data, Book_deposit_data
 from User import signup, login, get_library_id
 import uvicorn
 from Book import Books, Book
@@ -16,7 +16,7 @@ def root():
 
 
 @app.post("/signup")
-async def user_signup(user_signup_data:User_signup):
+async def user_signup(user_signup_data: User_signup):
     response = await signup(user_signup_data)
     return response
 
@@ -55,6 +55,12 @@ async def book_issue(student_data: Book_issue_data):
         return receipt_file
     else:
         return response
+
+
+@app.post("/book_deposit")
+async def book_deposit(deposit_data: Book_deposit_data):
+    response = await deposit_book(deposit_data)
+    return response
 
 
 if __name__ == '__main__':
